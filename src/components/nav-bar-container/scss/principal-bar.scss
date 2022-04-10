@@ -1,8 +1,12 @@
-@import '../../../scss/GLOBALS';
+@import '../../../scss/_GLOBALS.scss';
 
 * {
     margin: 0;
     padding: 0;
+}
+
+html {
+    font-family: $font;
 }
 
 .nav-bar-container {
@@ -12,4 +16,21 @@
     justify-content: space-around;
     height: 5rem;
     background-color: $hola;
+}
+
+.nav-bar-menuConcept {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar-menuConcept li {
+    list-style: none;
+    text-decoration: none;
+    padding-right: 2rem;
+}
+
+a {
+    text-decoration: none;
 }
