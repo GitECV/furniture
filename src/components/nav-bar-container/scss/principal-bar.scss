@@ -6,7 +6,7 @@
 }
 
 html {
-    font-family: $font;
+    font-family: $principal-font;
 }
 
 .nav-bar-container {
@@ -15,7 +15,7 @@ html {
     align-items: center;
     justify-content: space-around;
     height: 5rem;
-    background-color: $hola;
+    background-color: $seconcol;
 }
 
 .nav-bar-menuConcept {
@@ -29,6 +29,15 @@ html {
     list-style: none;
     text-decoration: none;
     padding-right: 2rem;
+}
+
+.nav-bar-brand {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-bar-brand h2 {
+    padding-left: 1rem;
 }
 
 a {

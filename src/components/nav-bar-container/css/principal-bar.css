@@ -1,17 +1,46 @@
-/* Error: Undefined variable.
- *   ,
- * 9 |     font-family: $font;
- *   |                  ^^^^^
- *   '
- *   scss\principal-bar.scss 9:18  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a   \2577 \a 9 \2502      font-family: $font;\d\a   \2502                   ^^^^^\a   \2575 \a   scss\\principal-bar.scss 9:18  root stylesheet";
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
 }
+
+html {
+  font-family: "Mulish", sans-serif;
+}
+
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
+  background-color: #EEEBDD;
+}
+
+.nav-bar-menuConcept {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar-menuConcept li {
+  list-style: none;
+  text-decoration: none;
+  padding-right: 2rem;
+}
+
+.nav-bar-brand {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-brand h2 {
+  padding-left: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=principal-bar.css.map */
