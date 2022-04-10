@@ -1,0 +1,15 @@
+@import '../../../scss/GLOBALS';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 5rem;
+    background-color: $hola;
+}
