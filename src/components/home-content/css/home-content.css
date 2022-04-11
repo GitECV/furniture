@@ -5,11 +5,34 @@
 }
 
 .home-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-image: url("../../../images/home-picture.jpg");
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 91.5vh;
   background-size: cover;
   background-position: top;
+}
+
+#btn-catalog {
+  background-color: #738FA1;
+  border-color: #fffcec;
+  border-width: 0.15rem;
+  font-weight: bold;
+  color: #ECECEC;
+  width: 20rem;
+  height: 4rem;
+  opacity: 0.92;
+  margin-top: 10rem;
+}
+
+#btn-catalog:hover {
+  background-color: #bfe7ff;
+  color: #000000;
+  border-color: #000000;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=home-content.css.map */

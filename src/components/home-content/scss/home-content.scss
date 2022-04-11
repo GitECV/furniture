@@ -6,9 +6,32 @@
 }
 
 .home-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-image: url('../../../images/home-picture.jpg');
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 91.5vh;
     background-size: cover;
     background-position: top;
+}
+
+#btn-catalog {
+    background-color: $princol;
+    border-color: $seconcol-lighter-1;
+    border-width: 0.15rem;
+    font-weight: bold;
+    color: $defaultgrey;
+    width: 20rem;
+    height: 4rem;
+    opacity: 0.92;
+    margin-top: 10rem;
+}
+
+#btn-catalog:hover {
+    background-color: $princol-lighter-3;
+    color: $black;
+    border-color: $black;
+    opacity: 1;
 }
