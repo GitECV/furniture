@@ -9,7 +9,7 @@ const Container = () => {
         <header className="nav-bar-container">
             <div className="nav-bar-brand">
                 <NavBarLogo clsName="nav-bar-logo" img={logo} description={"Son naranjas"} />
-                <h2>furniture.</h2>
+                <h1 id="logo-text">furniture.</h1>
             </div>
             <ul className="nav-bar-menuConcept">
             <NavBarMenu name={"Menu"} reference={"https://orteil.dashnet.org/cookieclicker/"}/>

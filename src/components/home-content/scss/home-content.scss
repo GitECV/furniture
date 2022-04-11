@@ -1,0 +1,14 @@
+@import '../../../scss/_GLOBALS.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.home-content-container {
+    background-image: url('../../../images/home-picture.jpg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    background-position: top;
+}

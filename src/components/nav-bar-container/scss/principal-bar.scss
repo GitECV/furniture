@@ -28,18 +28,69 @@ html {
 .nav-bar-menuConcept li {
     list-style: none;
     text-decoration: none;
-    padding-right: 2rem;
+    margin-right: 2rem;
+    color: $black-lighter-1;
 }
+
+.nav-bar-menuConcept a:visited {
+    text-decoration: none;
+    color: $black-lighter-1;
+  }
 
 .nav-bar-brand {
     display: flex;
     flex-direction: row;
 }
 
-.nav-bar-brand h2 {
+.nav-bar-brand h1 {
     padding-left: 1rem;
 }
+
+.nav-bar-menuConcept h3 {
+    display: inline-block;
+    position: relative;
+  }
+  
+.nav-bar-menuConcept h3:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $black-lighter-2;
+    transform-origin: right;
+    transition: transform 0.50s ease-out;
+  }
+  
+.nav-bar-menuConcept h3:hover:after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
 a {
     text-decoration: none;
 }
+
+/* Animation for the logo text */
+#logo-text {
+    animation: 5s anim-lineUp;
+  }
+  @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
