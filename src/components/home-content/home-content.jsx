@@ -1,4 +1,5 @@
 import { Button } from 'primereact/button';
+import { Link } from "react-router-dom";
 import "primereact/resources/themes/luna-green/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
@@ -8,7 +9,9 @@ const HomeContainer = () => {
     return (
         <div className="home-content-container">
             <div className="btn-see-catalog">
-                <Button label="Puedes ver nuestro catálogo" className="p-button-rounded" id="btn-catalog" />
+                <Link to='/catalogo'>
+                    <Button label="Puedes ver nuestro catálogo" className="p-button-rounded" id="btn-catalog" />
+                </Link>
             </div>
         </div>
       );

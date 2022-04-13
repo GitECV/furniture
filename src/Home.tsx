@@ -1,11 +1,11 @@
 import HomeContainer from './components/home-content/home-content.jsx';
 import NavBarContainer from './components/nav-bar-container/nav-bar-container.jsx'
 
-function App() {
+function Home() {
   return (<div className="App">
-    <NavBarContainer />
+    <NavBarContainer text={"furniture."}/>
     <HomeContainer />
   </div>);
 }
 
-export default App;
+export default Home;
