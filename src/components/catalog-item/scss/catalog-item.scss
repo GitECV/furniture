@@ -1,0 +1,36 @@
+@import '../../../scss/_GLOBALS.scss';
+
+.catalog-item {
+    display: flex;
+    flex-direction: row;
+    margin: 2.5rem 5rem 2.5rem 5rem;
+    background-color: $seconcol-darker-1;
+    height: 15rem;
+
+    border-radius: 25px;
+}
+
+.catalog-item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    width: 60%;
+}
+
+.catalog-item-text h1:link, .catalog-item-text h1:visited {
+    color: $black;
+}
+
+.catalog-item-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.catalog-item-img img {
+    width: 13rem;
+    padding: 2rem;
+}

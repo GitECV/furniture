@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+.catalog-item {
+  display: flex;
+  flex-direction: row;
+  margin: 2.5rem 5rem 2.5rem 5rem;
+  background-color: #eee8c4;
+  height: 15rem;
+  border-radius: 25px;
+}
+
+.catalog-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  width: 60%;
+}
+
+.catalog-item-text h1:link, .catalog-item-text h1:visited {
+  color: #000000;
+}
+
+.catalog-item-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.catalog-item-img img {
+  width: 13rem;
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=catalog-item.css.map */

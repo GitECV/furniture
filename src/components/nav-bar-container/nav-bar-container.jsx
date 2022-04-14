@@ -23,10 +23,10 @@ const Container = props => {
             <Hamburger toggled={isOpen} toggle={setOpen} onToggle={toggled => {
                 if (toggled) {
                    document.querySelector(".home-content-container").classList.add("hidden-visibility");
-                   document.querySelector(".nav-bar-container").insertAdjacentHTML("afterend", "<h1 class='hamburguer-background'>Hola</h1>");
+                   console.log("hola"); 
                 } else {
                     document.querySelector(".home-content-container").classList.remove("hidden-visibility");
-                    document.querySelector(".hamburguer-background").remove();
+                    console.log("adios");
                 }
             }} />
             </ul>
