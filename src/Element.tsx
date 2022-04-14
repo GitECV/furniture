@@ -1,10 +1,12 @@
+import THREEDContainer from './components/3d-element-container/3d-element-container.jsx';
 import NavBarContainer from './components/nav-bar-container/nav-bar-container.jsx'
 
-function Home() {
-  return (<div className="App">
+function Element() {
+  return (
+  <div className="App">
     <NavBarContainer text={"visor."}/>
-    
+    <THREEDContainer />
   </div>);
 }
 
-export default Home;
+export default Element;
