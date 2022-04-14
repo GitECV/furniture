@@ -30,6 +30,10 @@ html {
     color: $black-lighter-1;
   }
 
+.nav-bar-menuConcept a {
+  color: $black;
+}
+
 .nav-bar-brand {
     display: flex;
     flex-direction: row;
@@ -42,6 +46,7 @@ html {
 .nav-bar-menuConcept h3 {
     display: inline-block;
     position: relative;
+    color: $black;
   }
   
 .nav-bar-menuConcept h3:after {
@@ -94,13 +99,13 @@ a {
   }
 
 /* A partir de aquí comenzamos a trabajar las medias-queries */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .bigscreen-menu {
     display: none;
   }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
   .hamburger-react {
     display: none;
   }
