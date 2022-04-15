@@ -7,7 +7,7 @@ import './css/principal-bar.css';
 
 const Container = props => {
     const [isOpen, setOpen] = useState(false);
-
+    const container = props.container;
     return (
         <header className="nav-bar-container">
             <div className="nav-bar-brand">
@@ -22,11 +22,11 @@ const Container = props => {
             </div>
             <Hamburger toggled={isOpen} toggle={setOpen} onToggle={toggled => {
                 if (toggled) {
-                   document.querySelector(".home-content-container").classList.add("hidden-visibility");
-                   console.log("hola"); 
+                   document.querySelector(container).classList.add("hidden-visibility");
+                   document.querySelector(".hamburguer-menu-background").classList.remove("hidden-visibility");
                 } else {
-                    document.querySelector(".home-content-container").classList.remove("hidden-visibility");
-                    console.log("adios");
+                    document.querySelector(".hamburguer-menu-background").classList.add("hidden-visibility");
+                    document.querySelector(container).classList.remove("hidden-visibility");
                 }
             }} />
             </ul>

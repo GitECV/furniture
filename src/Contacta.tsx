@@ -4,7 +4,7 @@ const Contacta = () => {
     return (
         <div>
         <NavBarContainer text={"contacta."} />
-
+        
         </div>
       );
 }

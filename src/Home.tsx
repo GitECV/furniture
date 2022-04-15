@@ -4,7 +4,7 @@ import HamburguerBack from "./components/hamburguer-menu-background/hamburguer-m
 
 function Home() {
   return (<div className="App">
-    <NavBarContainer text={"furniture."}/>
+    <NavBarContainer text={"furniture."} container={".home-content-container"}/>
     <HomeContainer />
     <HamburguerBack />
   </div>);
