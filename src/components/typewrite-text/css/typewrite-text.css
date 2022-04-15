@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+.Typewriter {
+  font-family: "Mulish", sans-serif;
+  font-weight: bolder;
+  font-size: 5rem;
+}
+
+.Typewriter__wrapper {
+  font-style: italic;
+}
+
+/*# sourceMappingURL=typewrite-text.css.map */

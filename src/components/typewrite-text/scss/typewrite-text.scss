@@ -1,0 +1,11 @@
+@import '../../../scss/_GLOBALS.scss';
+
+.Typewriter {
+    font-family: $principal-font;
+    font-weight: bolder;
+    font-size: 5rem;
+}
+
+.Typewriter__wrapper {
+    font-style: italic;
+}
