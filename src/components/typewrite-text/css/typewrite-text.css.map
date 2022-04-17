@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/_GLOBALS.scss","../scss/typewrite-text.scss"],"names":[],"mappings":"AAAQ;ACER;EACI,aDuBa;ECtBb;EACA;;;AAGJ;EACI","file":"typewrite-text.css"}
+{"version":3,"sourceRoot":"","sources":["../../../scss/_GLOBALS.scss","../scss/typewrite-text.scss"],"names":[],"mappings":"AAAQ;AACA;ACCR;EACI,aDyBa;ECxBb;EACA;;;AAGJ;EACI","file":"typewrite-text.css"}
