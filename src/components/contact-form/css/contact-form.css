@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.form-container {
+  background-color: #eee8c4;
+  border-radius: 25px;
+  width: 70%;
+  padding: 3%;
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+.field {
+  margin-top: 1rem;
+}
+
+.field-checkbox {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=contact-form.css.map */
