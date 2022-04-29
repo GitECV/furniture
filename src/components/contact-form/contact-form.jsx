@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useFormik } from 'formik';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -6,12 +6,26 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Checkbox } from 'primereact/checkbox';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
+import emailjs from '@emailjs/browser';
 import './css/contact-form.css';
 
 const FormikFormDemo = () => {
     const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState({});
 
+      const form = useRef();
+      const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_e4h0e9d', 'template_s8h1dvn', form.current, 'x06GBhbyf8sXCpopp')
+          .then((result) => {
+              console.log(result.text);
+              
+          }, (error) => {
+              console.log(error.text);
+              formik.resetForm();
+          });
+      };
 
     const formik = useFormik({
         initialValues: {
@@ -47,8 +61,8 @@ const FormikFormDemo = () => {
         onSubmit: (data) => {
             setFormData(data);
             setShowMessage(true);
+            sendEmail();
 
-            formik.resetForm();
         }
     });
 

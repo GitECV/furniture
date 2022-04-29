@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 .THREEd-element-container canvas {
   width: 10%;
+}
+
+.container3d-full-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 10rem;
 }
 
 /*# sourceMappingURL=3d-element-container.css.map */
