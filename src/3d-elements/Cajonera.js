@@ -10,9 +10,9 @@ export default function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/cajonera.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh geometry={nodes.cajon.geometry} material={materials.cajon_mat} rotation={[Math.PI / 2, 0, 0]} scale={0.01} />
-      <mesh geometry={nodes.pomo.geometry} material={materials.pomo_mat} rotation={[Math.PI / 2, 0, 0]} scale={0.01} />
-      <mesh geometry={nodes.mesilla.geometry} material={materials.mesilla_mat} rotation={[Math.PI / 2, 0, 0]} scale={0.01} />
+      <mesh geometry={nodes.pomo.geometry} material={materials.pomo_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
+      <mesh geometry={nodes.mesilla.geometry} material={materials.mesilla_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
+      <mesh geometry={nodes.cajon.geometry} material={materials.cajon_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
     </group>
   )
 }
