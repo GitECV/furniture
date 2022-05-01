@@ -10,7 +10,6 @@ const MaterialIcon = (props) => {
 //Knob
 //Slider
 const [value, setValue] = useState(0);
-const [material, setMaterial] = useState("1");
 //Inicializamos la variable que contendrá el contenido
 let renderElement = null;
 
