@@ -7,8 +7,10 @@
 .container3d-full-item {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 10rem;
+}
+
+.model-container {
+  width: 80%;
 }
 
 /*# sourceMappingURL=3d-element-container.css.map */
