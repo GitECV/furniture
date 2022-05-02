@@ -1,11 +1,15 @@
 import React from "react";
-import { Canvas, useLoader, useThree } from '@react-three/fiber'
+import * as THREE from 'three';
+import { Canvas, useLoader } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera, useGLTF } from "@react-three/drei";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { TextureLoader } from 'three/src/loaders/TextureLoader.js';
 import  MaterialIcon  from '../gui-element-selector/gui-element-selector.jsx';
 import { proxy, useSnapshot } from 'valtio';
 import bucket from '../../3d-elements/cajonera.glb';
+import imp_deff_map1 from '../../images/wood_table_001_diff_4k.jpg'
+import imp_rugh_map1 from '../../images/wood_table_001_rough_4k.jpg'
+import imp_disp_map1 from '../../images/wood_table_001_disp_4k.png'
 import { Suspense, useRef, useState } from "react";
 import { DoubleSide } from "three";
 
@@ -32,7 +36,7 @@ export default class TreeDElementContainer extends React.Component {
       <div className="model-container">
         <CatalogItem doClick={this.handleNext} />
       </div>
-        <GUI renderElement={this.state.value} Material={"metal"} />
+        <GUI renderElement={this.state.value} Material={"wood"} />
       </div>
     );
   }
@@ -41,11 +45,19 @@ export default class TreeDElementContainer extends React.Component {
 function Model({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF(bucket);
+  const deff_map = useLoader(THREE.TextureLoader, imp_deff_map1);
+  const rough_map = useLoader(THREE.TextureLoader, imp_rugh_map1);
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh onClick={props.doClick} geometry={nodes.pomo.geometry} material={materials.pomo_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
-      <mesh geometry={nodes.mesilla.geometry} material={materials.mesilla_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
-      <mesh geometry={nodes.cajon.geometry} material={materials.cajon_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.04} />
+      <mesh onClick={props.doClick} geometry={nodes.pomo.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} > 
+        <meshStandardMaterial attach="material" map={deff_map} roughnessMap={rough_map} />
+      </mesh>
+      <mesh geometry={nodes.mesilla.geometry} material={materials.mesilla_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1}>
+        <meshStandardMaterial attach="material" map={deff_map} roughnessMap={rough_map} />
+      </mesh>
+      <mesh geometry={nodes.cajon.geometry} material={materials.cajon_mat} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} > 
+        <meshStandardMaterial attach="material" map={deff_map} roughnessMap={rough_map} />
+      </mesh>
     </group>
   )
 }
@@ -54,7 +66,7 @@ const CatalogItem = props => {
   return(
     <Canvas camera={{ position: [0, -40, 20] }} style={{height: "100vh"}}>
          <Suspense fallback={null}>
-         <OrbitControls maxDistance={1.5} minDistance={1} maxPolarAngle={Math.PI / 2} maxZoom={2} />
+         <OrbitControls maxDistance={35} minDistance={8} maxPolarAngle={Math.PI / 2} maxZoom={2} />
          <PerspectiveCamera
           aspect={1200 / 600}
           radius={(1200 + 600) / 4}
@@ -62,7 +74,7 @@ const CatalogItem = props => {
           position={[1, 2, 2]}
          makeDefault />
           <ambientLight intensity={0.5} color={'red'} />
-          <spotLight position={[10, 15, 10]} angle={0.3} castShadow={true} intensity={1} />
+          <spotLight position={[20, 28, 18]} angle={0.3} castShadow={true} intensity={1} />
             <Model doClick={props.doClick} />
          </Suspense>
     </Canvas>

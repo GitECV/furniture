@@ -1,56 +1,51 @@
-import React, { useState } from 'react';
+import React, { setState } from "react";
 import { Avatar } from 'primereact/avatar';
 import { Knob } from 'primereact/knob';
 import elementImage  from '../../images/Wood049_PREVIEW.jpg'
 import elementImage2  from '../../images/Metal038_PREVIEW.jpg'
 
-import './css/SliderDemo.css';
+export default class TreeDElementContainer extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        material: "1",
+        value: "0",
+      };
+    }
 
-const MaterialIcon = (props) => {
-//Knob
-//Slider
-const [value, setValue] = useState(0);
-//Inicializamos la variable que contendrá el contenido
-let renderElement = null;
+    handleSelectMaterial = (mat) => {
+      this.setState({material : mat}, () => {console.log(this.state.material)});
+    }
 
-const handleClick = (e) => {
-    let id = e.id.value;
-    console.log(id);
-}
-
-//Le damos un switch para ver de que tipo de elemento se trata
-switch (props.MaterialType) {
-    case "wood":
-        renderElement = (
-            <div>
-            <div className='material-selector'>
-                <Avatar shape="circle" size='xlarge' image={ elementImage } id={"1"} />
-                <Avatar shape="circle" size='xlarge' image={ elementImage } id={"2"} />
-                <Avatar shape="circle" size='xlarge' image={ elementImage } id={"3"} />
-            </div>
-                <h2>Barniz</h2>
-                <Knob value={value} valueColor={"MediumTurquoise"} rangeColor={"SlateGray"} onChange={(e) => setValue(e.value)} />
-            </div>
-        );
-        break;
-    case "metal":
-        renderElement = (
-            <div>
-            <div className='material-selector'>
-                <Avatar onClick={handleClick} shape="circle" size='xlarge' image={ elementImage2 } id={"1"} />
-                <Avatar shape="circle" size='xlarge' image={ elementImage2 } id={"2"} />
-                <Avatar shape="circle" size='xlarge' image={ elementImage2 } id={"3"} />
-            </div>
-                <h2>Pulido</h2>
-                <Knob value={value} valueColor={"MediumTurquoise"} rangeColor={"SlateGray"} onChange={(e) => setValue(e.value)} />
-            </div>
-        );
-        break;
+    render() {
+      let renderElement = null;
+      switch (this.props.MaterialType) {
+        case "metal":
+          renderElement = (<div className="GUI-material">
+          <div className='material-selector'>
+              <Avatar onClick={() => this.handleSelectMaterial("1")} shape="circle" size='xlarge' image={ elementImage2 } />
+              <Avatar onClick={() => this.handleSelectMaterial("2")} shape="circle" size='xlarge' image={ elementImage2 } />
+              <Avatar onClick={() => this.handleSelectMaterial("3")} shape="circle" size='xlarge' image={ elementImage2 } />
+          </div>
+          <h2>Pulido</h2>
+              <Knob value={this.state.value} valueColor={"MediumTurquoise"} rangeColor={"SlateGray"} onChange={(e) => this.setState({value: (e.value)})} />
+          </div>);
+          break;
+        case "wood":
+          renderElement = (<div className="GUI-material">
+          <div className='material-selector'>
+              <Avatar onClick={() => this.handleSelectMaterial("1")} shape="circle" size='xlarge' image={ elementImage } />
+              <Avatar onClick={() => this.handleSelectMaterial("2")} shape="circle" size='xlarge' image={ elementImage } />
+              <Avatar onClick={() => this.handleSelectMaterial("3")} shape="circle" size='xlarge' image={ elementImage } />
+          </div>
+          <h2>Pulido</h2>
+              <Knob value={this.state.value} valueColor={"MediumTurquoise"} rangeColor={"SlateGray"} onChange={(e) => this.setState({value: (e.value)})} />
+          </div>);
+          break;
         default:
-            renderElement = null;
-            break;
+          renderElement = null;
+          break;
+      }
+        return renderElement;
+      }
 }
-    return renderElement;
-}
-
-export default MaterialIcon;
