@@ -9,7 +9,8 @@ import { proxy, useSnapshot } from 'valtio';
 import bucket from '../../3d-elements/cajonera.glb';
 import imp_deff_map1 from '../../images/wood_table_001_diff_4k.jpg'
 import imp_rugh_map1 from '../../images/wood_table_001_rough_4k.jpg'
-import imp_disp_map1 from '../../images/wood_table_001_disp_4k.png'
+import imp_rugh_map2 from '../../images/Metal035_1K_Roughness.jpg'
+import imp_deff_map2 from '../../images/Metal035_1K_Color.jpg'
 import { Suspense, useRef, useState } from "react";
 import { DoubleSide } from "three";
 
@@ -30,6 +31,14 @@ export default class TreeDElementContainer extends React.Component {
     });
   };
 
+  handleMaterialSelect = (material) => {
+    if (material === "wood") {
+      console.log("Es madera")
+    } else {
+      console.log("Es metal");
+    }
+  }
+
   render() {
     return (
         <div className='container3d-full-item'>
@@ -47,6 +56,8 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF(bucket);
   const deff_map = useLoader(THREE.TextureLoader, imp_deff_map1);
   const rough_map = useLoader(THREE.TextureLoader, imp_rugh_map1);
+  const deff_map2 = useLoader(THREE.TextureLoader, imp_deff_map2);
+  const rough_map2 = useLoader(THREE.TextureLoader, imp_rugh_map2);
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh onClick={props.doClick} geometry={nodes.pomo.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} > 
