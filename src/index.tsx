@@ -8,7 +8,6 @@ import Element from './Element';
 import { store } from "./state/store"
 
 import reportWebVitals from './reportWebVitals';
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

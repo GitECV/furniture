@@ -1,13 +1,23 @@
-export const depositMoney = (amount) => {
+export const materialWood = () => {
     return {
-            type:"wood",
-            payload: amount
+            type:"wood"
     }
 }
 
-export const withdrawMoney = (amount) => {
+export const materialMetal = () => {
     return {
-            type:"metal",
-            payload: amount
+            type:"metal"
+    }
+}
+
+export const Azabache = () => {
+    return {
+            type:"1"
+    }
+}
+
+export const Marmol = () => {
+    return {
+            type:"2"
     }
 }

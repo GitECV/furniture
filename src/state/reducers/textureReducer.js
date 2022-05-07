@@ -1,9 +1,9 @@
 const reducer = (state = null, action) => {
     switch (action.type) {
-        case "wood":
-            return "wood";
-        case "metal":
-            return "metal";
+        case "1":
+            return "1";
+        case "2":
+            return "2";
         default:
             return null;
     }
