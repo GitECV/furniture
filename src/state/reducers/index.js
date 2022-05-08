@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
-import accountReducer from "./accountReducer"
-import textureReducer from "./textureReducer"
+import accountReducer from './accountReducer';
+import textureWoodReducer from './textureWoodReducer';
+import textureMetalReducer from './textureMetalReducer';
+
 
 const reducers = combineReducers ({
-    account: accountReducer,
-    texture: textureReducer
-});
+    material: accountReducer,
+    textureWood: textureWoodReducer,
+    textureMetal: textureMetalReducer
+})
 
 export default reducers;
