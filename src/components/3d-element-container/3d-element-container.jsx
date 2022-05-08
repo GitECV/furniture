@@ -1,10 +1,25 @@
-import { useState } from "react";
-import GUIElementSelector from '../gui-element-selector/gui-element-selector'
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import * as THREE from 'three';
+import { Canvas, useLoader } from '@react-three/fiber'
+import { OrbitControls, PerspectiveCamera, useGLTF } from "@react-three/drei";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { TextureLoader } from 'three/src/loaders/TextureLoader.js';
+import  GUIElementSelector  from '../gui-element-selector/gui-element-selector.jsx';
+import { proxy, useSnapshot } from 'valtio';
+import cajonera from '../../3d-elements/cajonera.glb';
+import imp_deff_map1 from '../../images/wood_table_001_diff_4k.jpg'
+import imp_rugh_map1 from '../../images/wood_table_001_rough_4k.jpg'
+import imp_disp_map1 from '../../images/wood_table_001_disp_4k.png'
+import { Suspense, useRef, useState } from "react";
+import { DoubleSide } from "three";
+import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state/index.js";
+import { useDispatch } from "react-redux";
 
 import './css/3d-element-container.css';
+import Model from "../../3d-elements/Cajonera";
+import { materialMetal } from "../../state/action-creators";
 
 const TREEDElementContainer = () => {
 
@@ -20,7 +35,10 @@ const TREEDElementContainer = () => {
   const {materialMetal, materialWood} = bindActionCreators(actionCreators, dispatch);
 
   return (
-    <div>
+      <div className='container3d-full-item'>
+      <div className="model-container">
+      <ModelContainer MaterialWood={materialWood} MaterialMetal={materialMetal} />
+      </div>
       <GUI
        Material={material}
        setPulido={setPulido}
@@ -32,6 +50,37 @@ const TREEDElementContainer = () => {
        />
      </div>
     );
+}
+
+function ModelContainer(props) {
+  return (
+    <Canvas camera={{ position: [0, -40, 20] }} style={{height: "100vh"}}>
+      <ambientLight intensity={0.5} />
+      <Suspense fallback={null}>
+        <Cajonera MaterialWood={props.MaterialWood} MaterialMetal={props.MaterialMetal} />
+      </Suspense>
+      <OrbitControls />
+    </Canvas>
+  )
+}
+
+function Cajonera ( props ) {
+  const group = useRef()
+  const { nodes, materials } = useGLTF(cajonera);
+
+  //Aquí cargamos los mapas que irán en los materiales
+  const deff_map = useLoader(THREE.TextureLoader, imp_deff_map1);
+  const rough_map = useLoader(THREE.TextureLoader, imp_rugh_map1);
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <mesh onClick={props.MaterialMetal} geometry={nodes.pomo.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} >
+        <meshStandardMaterial attach="material" map={deff_map} roughnessMap={rough_map} />
+      </mesh>
+      <mesh onClick={props.MaterialWood} geometry={nodes.mesilla.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} />
+      <mesh onClick={props.MaterialWood} geometry={nodes.cajon.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} />
+    </group>
+  )
 }
 
 const GUI = (props) => {
