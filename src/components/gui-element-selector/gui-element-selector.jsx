@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Avatar } from 'primereact/avatar';
 import { Knob } from 'primereact/knob';
 import elementImage  from '../../images/Wood049_PREVIEW.jpg'
@@ -16,7 +15,7 @@ const ThreeDElementContainer = (props) => {
   const dispatch = useDispatch();
   //Sacamos los actiones de Redux para poder modificar los estados
   const { 
-    texture0, texture1, texture2, texture3, texture4, texture5, texture6
+    texture0, texture1, texture2, texture3, texture4, texture5
   } = bindActionCreators(actionCreators, dispatch);
 
   let renderElement = null;
@@ -36,6 +35,7 @@ const ThreeDElementContainer = (props) => {
       )
       break;
     case "wood":
+      
       renderElement = (<div className="GUI-material">
           <div className='material-selector'>
               <Avatar onClick={texture0} shape="circle" size='xlarge' image={ elementImage } />
