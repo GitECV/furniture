@@ -65,7 +65,7 @@ function ModelContainer(props) {
   return (
     <Canvas camera={{ position: [0, -40, 20] }} style={{height: "100vh"}}>
       <ambientLight intensity={0.5} color={'blue'} />
-          <spotLight position={[10, 15, 10]} angle={0.3} castShadow={true} intensity={1} />
+          <spotLight position={[10, 15, 10]} angle={0.75} castShadow={true} intensity={1} />
       <Suspense fallback={null}>
         <Cajonera
         StateMesilla={props.StateMesilla}
