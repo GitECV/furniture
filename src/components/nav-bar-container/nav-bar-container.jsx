@@ -2,6 +2,8 @@ import { useState } from "react";
 import NavBarLogo from "../nav-bar-logo/nav-bar-logo";
 import NavBarMenu from "../nav-bar-menu/nav-bar-menu";
 import { Sling as Hamburger } from 'hamburger-react'
+import { Avatar } from "primereact/avatar";
+import { Link } from "react-router-dom";
 import logo from "../../images/Logo_negro.png"
 import './css/principal-bar.css';
 
@@ -19,6 +21,11 @@ const Container = props => {
             <NavBarMenu name={"Home"} path={"/"} />
             <NavBarMenu name={"Catálogo"} path={"/catalogo"}/>
             <NavBarMenu name={"Contacta"} path={"/contacta"}/>
+            <div>
+            <Link to={'/login'} >
+                <Avatar image="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+            </Link>
+            </div>
             </div>
             <Hamburger toggled={isOpen} toggle={setOpen} onToggle={toggled => {
                 if (toggled) {

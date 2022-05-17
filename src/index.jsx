@@ -5,6 +5,7 @@ import Home from './Home';
 import Catalogo from './Catalogo';
 import Contacta from './Contacta';
 import Element from './Element';
+import Login from './Login';
 import { store } from "./state/store"
 
 import reportWebVitals from './reportWebVitals';
@@ -16,6 +17,7 @@ ReactDOM.render(
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/contacta" element={<Contacta />} />
           <Route path="/element" element={< Element />} />
+          <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
     </Provider>,
