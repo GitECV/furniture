@@ -1,5 +1,7 @@
 import NavBarContainer from './components/nav-bar-container/nav-bar-container.jsx';
-import React, { Component, setState } from 'react';
+import React, { Component, setState, useContext } from 'react';
+import { useLocation } from 'react-router';
+import { Navigate, Outlet } from 'react-router-dom';
 
 class App extends Component {
 
@@ -30,7 +32,7 @@ class App extends Component {
         .then(data => {
             for (const d in data) {
                 if (data[d].username === this.state.username && data[d].contrasena === this.state.contrasena){
-                    this.setState({logged: true}, () => {console.log(this.state.username, this.state.contrasena)});
+
                     break;
                 }
             }
@@ -47,7 +49,7 @@ class App extends Component {
                 <form onSubmit={this.addUsuario}>
                     <label>Username</label>
                     <input name='username' onChange={this.handleChange} type="textarea"></input><br/>
-                    <label>ContraseĂ±a</label>
+                    <label>Contraseña</label>
                     <input name='contrasena' onChange={this.handleChange} type="textarea"></input><br/>
                     <button type="submit">Submit</button>
                 </form>
