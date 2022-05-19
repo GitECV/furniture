@@ -1,21 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
 }
 
-.form {
+.form-interior {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 2rem;
+  padding: 2rem;
 }
 
 .form-container {
   background-color: #eee8c4;
   border-radius: 25px;
-  width: 70%;
-  padding: 3%;
+  margin-right: 6%;
+  margin-left: 6%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-top: 2rem;
 }
 
 .form-container h1 {

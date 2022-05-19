@@ -1,40 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
-.catalog-item {
-  display: flex;
-  flex-direction: row;
-  margin: 2.5rem 5rem 2.5rem 5rem;
-  background-color: #eee8c4;
-  height: 15rem;
-  border-radius: 25px;
-}
-
-.catalog-item-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  width: 60%;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 .catalog-item-text h1:link, .catalog-item-text h1:visited {
   color: #000000;
 }
 
-.catalog-item-img {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
-}
+@media (min-width: 600px) {
+  .catalog-item {
+    display: flex;
+    flex-direction: row;
+    margin: 2.5rem 5rem 2.5rem 5rem;
+    background-color: #eee8c4;
+    height: 15rem;
+    border-radius: 25px;
+  }
 
-.catalog-item-img img {
-  width: 13rem;
-  padding: 2rem;
-}
+  .catalog-item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    width: 60%;
+  }
 
-.catalog-item-text h1, .catalog-item-text p {
-  color: #000000;
+  .catalog-item-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+  }
+
+  .catalog-item-img img {
+    width: 13rem;
+    padding: 2rem;
+  }
+
+  .catalog-item-text h1, .catalog-item-text p {
+    color: #000000;
+  }
+}
+@media (max-width: 600px) {
+  .catalog-item {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5rem 2rem 2.5rem 2rem;
+    background-color: #eee8c4;
+    height: 15rem;
+    justify-content: center;
+    border-radius: 25px;
+  }
+
+  .catalog-item-img {
+    display: none;
+  }
+
+  .catalog-item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1:link, h1:visited {
+    color: #000000;
+  }
 }
 
 /*# sourceMappingURL=catalog-item.css.map */

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { SelectButton } from 'primereact/selectbutton';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import axios from 'axios';
+import ModifyUsers from '../modify-users/modify-users';
+import DeleteUsers from '../delete-users/delete-users';
 
 const DashContainer = () => {
     const [value1, setValue1] = useState('Off');
@@ -11,16 +14,16 @@ const DashContainer = () => {
         var PrintElement = null;
         switch (value1) {
             case 'Cambiar textos':
-                PrintElement = <CambiarTextos />
+                PrintElement = <h1>Estos son los textos</h1>
                 break;
             case 'Añadir usuarios':
-                PrintElement = <h1>Estos son los usuarios</h1>
+                PrintElement = <h1>Añadir usuarios</h1>
                 break;
             case 'Eliminar usuarios':
-                PrintElement = <h1>Eliminar usuarios</h1>
+                PrintElement = <EliminarUsuario />
                 break;
             case 'Modificar usuarios':
-                PrintElement = <h1>Modificar usuarios</h1>
+                PrintElement = <CambiarUsuarios />
                 break;
             default:
                 PrintElement = null;
@@ -31,16 +34,63 @@ const DashContainer = () => {
         );
     }
 
-    const CambiarTextos = () => {
+    const EliminarUsuario = () => {
+
         const [datos, setDatos] = useState([]);
-        fetch('https://mern-stack-tefege.herokuapp.com/api/usuarios')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data[0]);
-            setDatos(data[0]._id + " " + data[0].nombre + " " + data[0].apellidos);
-        });
+        useEffect(() => {
+            axios.get('https://mern-stack-tefege.herokuapp.com/api/usuarios')
+                .then(res => {
+                    setDatos(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                }, []);
+        })
+    
         return (
-            <p>{datos}</p>
+            <div className='container-changeusers'>
+                <div className='datatable-changeusers'>
+                <DataTable value={datos} responsiveLayout="scroll">
+                    <Column field="_id" header="ID"></Column>
+                    <Column field="nombre" header="Nombre"></Column>
+                    <Column field="apellidos" header="Apellidos"></Column>
+                    <Column field="username" header="Username"></Column>
+                    <Column field="contrasena" header="Contraseña"></Column>
+                    <Column field="type" header="Tipo"></Column>
+                </DataTable>
+                </div>
+                <DeleteUsers />
+            </div>
+        )
+    }
+
+    const CambiarUsuarios = () => {
+
+        const [datos, setDatos] = useState([]);
+        useEffect(() => {
+            axios.get('https://mern-stack-tefege.herokuapp.com/api/usuarios')
+                .then(res => {
+                    setDatos(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                }, []);
+        })
+
+        return (
+            <div className='container-changeusers'>
+                <div className='datatable-changeusers'>
+                <DataTable value={datos} responsiveLayout="scroll">
+                    <Column field="_id" header="ID"></Column>
+                    <Column field="nombre" header="Nombre"></Column>
+                    <Column field="apellidos" header="Apellidos"></Column>
+                    <Column field="username" header="Username"></Column>
+                    <Column field="contrasena" header="Contraseña"></Column>
+                    <Column field="type" header="Tipo"></Column>
+                </DataTable>
+                </div>
+                <ModifyUsers />
+            </div>
         )
     }
 

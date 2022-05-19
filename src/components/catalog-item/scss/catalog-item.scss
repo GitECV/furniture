@@ -1,5 +1,10 @@
 @import '../../../scss/_GLOBALS.scss';
 
+.catalog-item-text h1:link, .catalog-item-text h1:visited {
+    color: $black;
+}
+
+@media (min-width: 600px) {
 .catalog-item {
     display: flex;
     flex-direction: row;
@@ -18,10 +23,6 @@
     width: 60%;
 }
 
-.catalog-item-text h1:link, .catalog-item-text h1:visited {
-    color: $black;
-}
-
 .catalog-item-img {
     display: flex;
     flex-direction: row;
@@ -38,3 +39,33 @@
 .catalog-item-text h1, .catalog-item-text p {
     color: $black;
 }
+}
+
+@media (max-width: 600px) {
+    .catalog-item {
+        display: flex;
+        flex-direction: column;
+        margin: 2.5rem 2rem 2.5rem 2rem;
+        background-color: $seconcol-darker-1;
+        height: 15rem;
+        justify-content: center;
+    
+        border-radius: 25px;
+    }
+
+    .catalog-item-img {
+       display: none;
+    }
+
+    .catalog-item-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1:link, h1:visited {
+        color: $black;
+    }
+  }

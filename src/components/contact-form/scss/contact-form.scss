@@ -5,18 +5,22 @@
     padding: 0;
 }
 
-.form {
+.form-interior {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 2rem;
+    padding: 2rem;
 }
 
 .form-container {
     background-color: $seconcol-darker-1;
     border-radius: 25px;
-    width: 70%;
-    padding: 3%;
+    margin-right: 6% ;
+    margin-left: 6%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-top: 2rem;
 }
 
 .form-container h1 {

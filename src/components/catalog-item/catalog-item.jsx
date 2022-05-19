@@ -11,7 +11,7 @@ const CatalogItem = props => {
                 <p>{props.description}</p>
             </div>
             <div className='catalog-item-img'>
-                <Image src= {props.image} template="Preview Content" alt="Producto" preview={false} />
+                <Image src= {props.image} template="Preview Content" alt="Producto" preview={false} width={500} />
             </div>
         </div>
         </Link>

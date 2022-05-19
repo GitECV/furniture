@@ -74,18 +74,18 @@ const FormikFormDemo = () => {
     const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
 
     return (
-        <div className="form">
+        <div className="form-container">
             <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="center" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex align-items-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem' }}></i>
-                    <h5>Tu pregunta ha sido enviado</h5>
+                    <h5>Tu pregunta ha sido enviada</h5>
                     <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
                     Muchas gracias por enviarnos tu pregunta, <b>{formData.name}</b>, intentaremos contestarte lo antes posible, estate pendiente del siguiente correo: <b>{formData.email}</b>. No te olvides de revisar la carpeta de Correo No Deseado.
                     </p>
                 </div>
             </Dialog>
 
-            <div className="form-container">
+            <div className="form-interior">
                 <div className="card">
                     <h1>Envianos las preguntas que tengas</h1>
                     <form onSubmit={formik.handleSubmit} className="p-fluid">

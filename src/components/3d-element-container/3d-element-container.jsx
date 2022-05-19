@@ -125,10 +125,10 @@ function Cajonera ( props ) {
         <meshStandardMaterial attach="material" map={deff_pomo} roughness={props.Pulido / 100} /> 
       </mesh>
       <mesh onClick={handleClickMesilla} geometry={nodes.mesilla.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1}>
-        <meshStandardMaterial attach="material" map={deff_mesilla} roughness={props.Pulido / 100} /> 
+        <meshStandardMaterial attach="material" map={deff_mesilla} roughness={props.Barniz / 100} /> 
       </mesh>
       <mesh onClick={handleClickCajon} geometry={nodes.cajon.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} >
-        <meshStandardMaterial attach="material" map={deff_cajon} roughness={props.Pulido / 100} /> 
+        <meshStandardMaterial attach="material" map={deff_cajon} roughness={props.Barniz / 100} /> 
       </mesh>
     </group>
   )
