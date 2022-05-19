@@ -63,7 +63,8 @@ const TREEDElementContainer = () => {
 
 function ModelContainer(props) {
   return (
-    <Canvas camera={{ position: [0, -40, 20] }} style={{height: "100vh"}}>
+    <div className="canvas-size">
+    <Canvas camera={{ position: [0, -40, 20] }}>
       <ambientLight intensity={0.5} color={'blue'} />
           <spotLight position={[10, 15, 10]} angle={0.75} castShadow={true} intensity={1} />
       <Suspense fallback={null}>
@@ -81,6 +82,7 @@ function ModelContainer(props) {
       </Suspense>
       <OrbitControls maxDistance={20} minDistance={10} maxPolarAngle={Math.PI / 2} maxZoom={1} />
     </Canvas>
+    </div>
   )
 }
 
