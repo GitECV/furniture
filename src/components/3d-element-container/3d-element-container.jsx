@@ -33,7 +33,7 @@ const TREEDElementContainer = () => {
   const {mesillaPomo, mesillaCajon, mesillaMesilla} = bindActionCreators(actionCreators, dispatch);
 
   return (
-    <div className='container3d-full-item'>
+    <div className='container3d'>
       <div className="model-container">
       <ModelContainer
       StateMesilla={mesilla_txt}
