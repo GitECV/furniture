@@ -7,9 +7,9 @@ import Contacta from './Contacta';
 import Element from './Element';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import Register from './Register';
 import { store } from "./state/store"
 
-import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -20,10 +20,9 @@ ReactDOM.render(
           <Route path="/element" element={< Element />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
     </Provider>,
   document.getElementById('root')
 );
-
-reportWebVitals();

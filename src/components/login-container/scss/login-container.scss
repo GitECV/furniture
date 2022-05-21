@@ -1,0 +1,37 @@
+@import '../../../scss/_GLOBALS.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem;
+    padding: 2rem;
+    background-color: $seconcol-darker-2;
+    border-radius: 50px;
+}
+
+.p-inputtext {
+    margin: 0.2rem;
+    background-color: white;
+    color: $black;
+}
+
+#prime-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: $princol-darker-1;
+}
+
+.error-log {
+    color: red;
+}
+
+.hidden-visibility {
+    display: none;
+}

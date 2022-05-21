@@ -6,6 +6,7 @@ const HamburguerBack = () => {
             <HamburguerItem name={"Home"} link={"/"} />
             <HamburguerItem name={"Catálogo"} link={"/catalogo"} />
             <HamburguerItem name={"Contacta"} link={"/contacta"} />
+            <HamburguerItem name={"Login"} link={"/login"} />
         </div>
       );
 }
