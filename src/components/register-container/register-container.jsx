@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import md5 from 'md5';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
@@ -14,9 +15,11 @@ class RegisterForm extends Component {
     constructor() {
         super();
         this.state = {
-            nombre: '',
+            nombre: 'null',
+            apellidos: 'null',
             username: '',
             contrasena:'',
+            correo: '',
             type: "USER",
             edad: '',
             curso: '',
@@ -25,7 +28,10 @@ class RegisterForm extends Component {
         this.addUsuario = this.addUsuario.bind(this);
     }
     handleChange(e) {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+        if(name === "contrasena") {
+            value = md5(value.toString());
+        }
         console.log(e.target);
         this.setState({
             [name]: value
@@ -33,25 +39,113 @@ class RegisterForm extends Component {
         })
         console.log(this.state);
     }
-    
-    addUsuario(e){
-        fetch('/api/usuarios', {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
 
+    addUsuario(e){
+        this.validateName();
+        this.validateEmail();
+        this.validateCurso();
+        this.validatePassword();
+
+        if (this.validateName() && this.validateEmail() && this.validateCurso() && this.validatePassword()) {
+            fetch('https://mern-stack-tefege.herokuapp.com/api/usuarios', {
+                method: 'POST',
+                body: JSON.stringify(this.state),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+        }
         e.preventDefault();
     }
 
+    validateCurso() {
+        if(this.state.curso === '') {
+            if (document.querySelector("#curso-help") === null) {
+                document.querySelector(".field-radiobutton").insertAdjacentHTML("beforeend", '<br /><small id="curso-help" className="p-error">Tienes que seleccionar una opción</small>');
+            }
+        return false;
+        } else {
+            if (document.querySelector("#curso-help") !== null) {
+                document.getElementById("curso-help").remove();
+            }
+        return true
+    }
+}
+
+    validatePassword() {
+        if (this.state.contrasena === '') {
+            if (document.querySelector("#contrasena-help") === null) {
+                document.querySelector("#contrasena").classList.add("p-invalid");
+                document.querySelector(".field-contrasena").insertAdjacentHTML("beforeend", '<small id="contrasena-help" className="p-error">La contraseña no puede estar en blanco</small>');
+            }
+        return false;
+        } else {
+            if (document.querySelector("#contrasena-help") !== null) {
+                document.getElementById("contrasena-help").remove();
+                document.querySelector("#contrasena").classList.remove("p-invalid");
+            }
+        return true;
+    }
+    }
+
+    validateEmail() {
+        if (this.state.correo === '') {
+            if (document.querySelector("#correo-help") === null) {
+                document.querySelector("#correo").classList.add("p-invalid");
+                document.querySelector(".field-correo").insertAdjacentHTML("beforeend", '<small id="correo-help" className="p-error">El correo no puede estar en blanco</small>');
+            }
+        return false;
+        } else {
+            if (document.querySelector("#correo-help") !== null) {
+                document.getElementById("correo-help").remove();
+                document.querySelector("#correo").classList.remove("p-invalid");
+            }
+            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.correo)){
+                document.querySelector("#correo").classList.add("p-invalid");
+                document.querySelector(".field-correo").insertAdjacentHTML("beforeend", '<small id="correo-help" className="p-error">El formato del correo no es válido. E.J. example@email.com</small>');
+                return false;
+            } 
+        return true;
+    }
+}
+
+    validateName() {
+        //Validamos que el input no está vacío
+        if (this.state.username === '') {
+            if (document.querySelector("#nombre-help") === null) {
+                document.querySelector("#username").classList.add("p-invalid");
+                document.querySelector(".field-nombre").insertAdjacentHTML("beforeend", '<small id="nombre-help" className="p-error">El nombre de usuario no puede estar en blanco</small>');
+            }
+        return false;
+        } else {
+            if (document.querySelector("#nombre-help") !== null) {
+                document.getElementById("nombre-help").remove();
+                document.querySelector("#username").classList.remove("p-invalid");
+            }
+
+            //Comprobamos que el nombre registrado no existe
+            fetch('https://mern-stack-tefege.herokuapp.com/api/usuarios')
+            .then(response => response.json())
+            .then(data => {
+                for (const d in data) {
+                    if (data[d].username === this.state.username) {
+                        if (document.querySelector("#nombre-help") === null) {
+                            document.querySelector("#username").classList.add("p-invalid");
+                            document.querySelector(".field-nombre").insertAdjacentHTML("beforeend", '<small id="nombre-help" className="p-error">El nombre de usuario ya existe.</small>');
+                        }
+                }
+            }
+        })
+        return true;
+        }
+      }
+
     render() {
-        const header = <h6>Introduce tu contraseña</h6>;
+        const header = <h3>Introduce tu contraseña</h3>;
         const footer = (
             <React.Fragment>
                 <Divider />
@@ -68,28 +162,23 @@ class RegisterForm extends Component {
                 <form onSubmit={this.addUsuario}>
                 <div className="field-nombre">
                     <label htmlFor="username" className="block">Nombre de usuario</label><br />
-                    <InputText id="username" name='username' aria-describedby="nombre" className="p-invalid block" onChange={this.handleChange} /><br />
-                    <small id="nombre-help" className="p-error block">El nombre no puede estar vacío</small>
+                    <InputText id="username" name='username' aria-describedby="nombre" onChange={this.handleChange} /><br />
                 </div>
                 <div className="field-correo">
                     <label htmlFor="correo" className="block">Correo electrónico</label><br />
-                    <InputText id="correo" name='correo' aria-describedby="correo" className="p-invalid block" onChange={this.handleChange} /><br />
-                    <small id="correo-help" className="p-error block">El correo no puede estar vacío</small>
+                    <InputText id="correo" name='correo' aria-describedby="correo" onChange={this.handleChange} /><br />
                 </div>
                 <div className='field-contrasena'>
-                    <label htmlFor="nombre" className="block">Contraseña</label><br />
-                    <Password name='contrasena' onChange={this.handleChange} header={header} footer={footer} /> <br />
-                    <small id="nombre-help" className="p-error block">La contraseña no puede estar vacía</small>
+                    <label htmlFor="contrasena" className="block">Contraseña</label><br />
+                    <Password id='contrasena' name='contrasena' onChange={this.handleChange} header={header} footer={footer} /> <br />
                 </div>
                 <div className='field-edad'>
-                <Dropdown name='edad' value={this.state.edad} options={edades} onChange={this.handleChange} optionLabel="name" placeholder="Edad" />
+                <Dropdown name='edad' value={this.state.edad} options={edades} onChange={this.handleChange} placeholder="Edad" />
                 </div>
-                <h5>¿Has cursado estudios relacionados con el arte?</h5>
+                <h3>¿Has cursado estudios relacionados con el arte?</h3>
                 <div className="field-radiobutton">
                     <RadioButton inputId="cursadosi" name="curso" value="Si" onChange={(e) => this.setState({curso: e.value})} checked={this.state.curso === 'Si'} />
                     <label htmlFor="cursadosi">Si</label>
-                </div>
-                <div className="field-radiobutton">
                     <RadioButton inputId="cursadono" name="curso" value="No" onChange={(e) => this.setState({curso: e.value})} checked={this.state.curso === 'No'} />
                     <label htmlFor="cursadono">No</label>
                 </div>
@@ -100,15 +189,14 @@ class RegisterForm extends Component {
     }
 }
 
-   //TRESCV
    const  edades = [
-    { name: '15-20'},
-    { name: '20-25' },
-    { name: '25-30'},
-    { name: '30-40'},
-    { name: '40-50' },
-    { name: '50-60' },
-    { name: '> 60' },
+    '15-20',
+    '20-25',
+    '25-30',
+    '30-40',
+    '40-50',
+    '50-60',
+    '> 60',
 ];
 
 export default RegisterForm;
