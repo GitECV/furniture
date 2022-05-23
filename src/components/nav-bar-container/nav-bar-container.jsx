@@ -24,6 +24,7 @@ const Container = props => {
         } else {
             if (loggout) {
                 sessionStorage.removeItem('ID');
+                sessionStorage.removeItem('USER');
                 alert("Acabas de salir de tu cuenta. ¡Nos vemos pronto!");
             }
             logginElement = (<div className="loggout">
@@ -31,6 +32,17 @@ const Container = props => {
         </div>)
         }
         return (logginElement);
+    }
+
+    const SuperUser = () => {
+        let superUserElement = null;
+
+        if (sessionStorage.getItem("USER") === "SUPERUSER") {
+            superUserElement = (
+                <NavBarMenu name={"Dashboard"} path={"/dashboard"}/> 
+            );
+        }
+        return (superUserElement);
     }
 
     return (
@@ -44,6 +56,7 @@ const Container = props => {
             <NavBarMenu name={"Home"} path={"/"} />
             <NavBarMenu name={"Catálogo"} path={"/catalogo"}/>
             <NavBarMenu name={"Contacta"} path={"/contacta"}/>
+            <SuperUser />
             <Loggin />
             </div>
             <Hamburger toggled={isOpen} toggle={setOpen} onToggle={toggled => {

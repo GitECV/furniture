@@ -8,11 +8,13 @@ const CatalogContent = () => {
              title={"Cubo de madera"} 
              description={"El cubo de madera está diseñado con ..."}
              image={Placeholder}
+             id={"1"}
              />
              <CatalogItem
              title={"Silla de madera"} 
              description={"la silla de madera está diseñada con ..."}
              image={Placeholder}
+             id={"2"}
              />
         </div>
       );

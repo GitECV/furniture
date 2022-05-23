@@ -25,6 +25,8 @@ const LoginContainer = props => {
                     setUsername("");
                     setContrasena("");
                     alert("Te has loggeado correctamente, puedes comenzar a votar");
+                    //Añadimos un session storage con el tipo de usuario
+                    sessionStorage.setItem('USER', data[d].type);
                     window.location.replace("/");
                     break;
             } else {

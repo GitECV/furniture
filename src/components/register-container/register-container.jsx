@@ -15,14 +15,13 @@ class RegisterForm extends Component {
     constructor() {
         super();
         this.state = {
-            nombre: 'null',
-            apellidos: 'null',
             username: '',
             contrasena:'',
             correo: '',
+            valoracion: 'null',
             type: "USER",
             edad: '',
-            curso: '',
+            estudios: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.addUsuario = this.addUsuario.bind(this);
@@ -63,7 +62,7 @@ class RegisterForm extends Component {
     }
 
     validateCurso() {
-        if(this.state.curso === '') {
+        if(this.state.estudios === '') {
             if (document.querySelector("#curso-help") === null) {
                 document.querySelector(".field-radiobutton").insertAdjacentHTML("beforeend", '<br /><small id="curso-help" className="p-error">Tienes que seleccionar una opción</small>');
             }
@@ -158,7 +157,7 @@ class RegisterForm extends Component {
             </React.Fragment>
         );
         return (
-            <div>
+            <div className='form-container'>
                 <form onSubmit={this.addUsuario}>
                 <div className="field-nombre">
                     <label htmlFor="username" className="block">Nombre de usuario</label><br />
@@ -173,13 +172,14 @@ class RegisterForm extends Component {
                     <Password id='contrasena' name='contrasena' onChange={this.handleChange} header={header} footer={footer} /> <br />
                 </div>
                 <div className='field-edad'>
+                <label htmlFor="edad" className="block">Edad</label><br />
                 <Dropdown name='edad' value={this.state.edad} options={edades} onChange={this.handleChange} placeholder="Edad" />
                 </div>
                 <h3>¿Has cursado estudios relacionados con el arte?</h3>
                 <div className="field-radiobutton">
-                    <RadioButton inputId="cursadosi" name="curso" value="Si" onChange={(e) => this.setState({curso: e.value})} checked={this.state.curso === 'Si'} />
+                    <RadioButton inputId="cursadosi" name="curso" value="Si" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'Si'} />
                     <label htmlFor="cursadosi">Si</label>
-                    <RadioButton inputId="cursadono" name="curso" value="No" onChange={(e) => this.setState({curso: e.value})} checked={this.state.curso === 'No'} />
+                    <RadioButton inputId="cursadono" name="curso" value="No" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'No'} />
                     <label htmlFor="cursadono">No</label>
                 </div>
                     <Button className='prime-button' label="Registrarse" />
