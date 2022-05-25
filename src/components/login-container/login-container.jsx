@@ -42,6 +42,7 @@ const LoginContainer = props => {
 
     return (
         <div className="login-container">
+            <h1>Si tienes cuenta Loggeate para votar</h1>
             {logFailed}
             <form onSubmit={logUsuario}>
                 <label htmlFor="name">Nombre de usuario</label><br/>
@@ -50,7 +51,7 @@ const LoginContainer = props => {
                 <label htmlFor="password">Contraseña</label><br />
                 <Password name='contrasena' className='prime-input' value={contrasena} onChange={(e) => setContrasena(e.target.value)} feedback={false}  />
                 <br />
-                <Button type='submit' id='prime-button' label="Save" />
+                <Button className='entrar-button' type='submit' id='prime-button' label="Entrar" />
             </form>
             <Registrate />
         </div>

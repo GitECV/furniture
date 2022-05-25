@@ -44,10 +44,6 @@ class ModifyUsers extends Component {
         return (
             <div>
                 <form onSubmit={this.addUsuario}>
-                    <label>Nombre</label>
-                    <input name='nombre' onChange={this.handleChange} type="text"></input><br/>
-                    <label>Apellidos</label>
-                    <input name='apellidos' onChange={this.handleChange} type="textarea"></input><br/>
                     <label>Username</label>
                     <input name='username' onChange={this.handleChange} type="textarea"></input><br/>
                     <label>ContraseĂ±a</label>

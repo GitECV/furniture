@@ -157,8 +157,9 @@ class RegisterForm extends Component {
             </React.Fragment>
         );
         return (
-            <div className='form-container'>
-                <form onSubmit={this.addUsuario}>
+            <div className='form-container-register'>
+                <form onSubmit={this.addUsuario} className={"dentro-formulario"}>
+                <h1>Regístrate para poder votar</h1>
                 <div className="field-nombre">
                     <label htmlFor="username" className="block">Nombre de usuario</label><br />
                     <InputText id="username" name='username' aria-describedby="nombre" onChange={this.handleChange} /><br />
@@ -173,13 +174,13 @@ class RegisterForm extends Component {
                 </div>
                 <div className='field-edad'>
                 <label htmlFor="edad" className="block">Edad</label><br />
-                <Dropdown name='edad' value={this.state.edad} options={edades} onChange={this.handleChange} placeholder="Edad" />
+                <Dropdown className='edad-campo' name='edad' value={this.state.edad} options={edades} onChange={this.handleChange} placeholder="Edad" />
                 </div>
-                <h3>¿Has cursado estudios relacionados con el arte?</h3>
+                <h3>Estudios relacionados con el arte</h3>
                 <div className="field-radiobutton">
-                    <RadioButton inputId="cursadosi" name="curso" value="Si" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'Si'} />
+                    <RadioButton className='radio-color' inputId="cursadosi" name="curso" value="Si" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'Si'} />
                     <label htmlFor="cursadosi">Si</label>
-                    <RadioButton inputId="cursadono" name="curso" value="No" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'No'} />
+                    <RadioButton className='radio-color' inputId="cursadono" name="curso" value="No" onChange={(e) => this.setState({estudios: e.value})} checked={this.state.estudios === 'No'} />
                     <label htmlFor="cursadono">No</label>
                 </div>
                     <Button className='prime-button' label="Registrarse" />

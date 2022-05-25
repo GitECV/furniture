@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../scss/register-container.scss"],"names":[],"mappings":"AAAA;EACI;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI","file":"register-container.css"}
+{"version":3,"sourceRoot":"","sources":["../../../scss/_GLOBALS.scss","../scss/register-container.scss"],"names":[],"mappings":"AAAQ;AACA;ACCR;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA,kBDMgB;ECLhB;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI","file":"register-container.css"}

@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-form-delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.br-barra {
+  display: block;
+}
+
+/*# sourceMappingURL=delete-users.css.map */

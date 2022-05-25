@@ -1,28 +1,45 @@
+@import '../../../scss/_GLOBALS.scss';
+
 * {
     margin: 0;
     padding: 0;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-container {
+.form-container-register {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: $seconcol-darker-1;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 25px;
 }
 
-.p-dropdown {
+.dentro-formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-nombre {
+    margin: 0.2rem;
+}
+
+.field-correo {
+    margin: 0.2rem;
+}
+
+.field-contrasena {
+    margin: 0.2rem;
+}
+
+.edad-campo {
     background-color: white;
 }
 
-.p-radiobutton-box {
-    color: white;
-}
-
-.p-button {
-    background-color: blue;
+.prime-button {
+    margin-top: 0.5rem;
 }

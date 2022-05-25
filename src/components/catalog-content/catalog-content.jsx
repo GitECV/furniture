@@ -5,15 +5,15 @@ const CatalogContent = () => {
     return (
         <div className="catalog-container">
             <CatalogItem
-             title={"Cubo de madera"} 
-             description={"El cubo de madera está diseñado con ..."}
-             image={Placeholder}
+             title={"Mesilla"} 
+             description={"Esta mesilla es completamente editable y se compone de dos materiales distintos, madera y metal."}
+             image={'https://i.imgur.com/UCzxE0A.png'}
              id={"1"}
              />
              <CatalogItem
-             title={"Silla de madera"} 
-             description={"la silla de madera está diseñada con ..."}
-             image={Placeholder}
+             title={"Silla"} 
+             description={"La silla está elaborada con dos materiales principales, como son la madera y la tela"}
+             image={'https://cdn.polyhaven.com/asset_img/primary/ArmChair_01.png?height=780'}
              id={"2"}
              />
         </div>

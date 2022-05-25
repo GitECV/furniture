@@ -12,6 +12,7 @@ const CatalogItem = props => {
             setRating(rate);
             //TODO Añadir un alert que avise de que el voto ha sido emitido
         } else {
+            setRating(0);
             alert("Debes estar registrado para poder votar");
         }
         // other logic
