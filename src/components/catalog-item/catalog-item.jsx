@@ -10,37 +10,37 @@ const CatalogItem = props => {
     const handleRating = (rate) => {
         if (sessionStorage.getItem("ID") !== null) {
             setRating(rate);
+            console.log(props.id, rate);
+            const id = sessionStorage.getItem("ID");
             //TODO Añadir un alert que avise de que el voto ha sido emitido
+             //TRESCV
+             if(props.id == 1) {
+                fetch(`http://localhost:4000/api/usuarios/${id}`, {
+                    method: 'PUT', // or 'PUT'
+                    body: JSON.stringify({valoracion1: rate}),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => alert("Gracias por emitir una votación."));
+             } else {
+                fetch(`http://localhost:4000/api/usuarios/${id}`, {
+                    method: 'PUT', // or 'PUT'
+                    body: JSON.stringify({valoracion2: rate}),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => alert("Gracias por emitir una votación."));
+             }
         } else {
             setRating(0);
             alert("Debes estar registrado para poder votar");
         }
         // other logic
       }
-
-      useEffect(() => {
-        let object = {
-            valoracion:{element: props.id, rating: rating}
-        }
-        console.log(JSON.stringify(object));
-
-        //TRESCV
-        /*
-        fetch('https://mern-stack-tefege.herokuapp.com/api/usuarios', {
-                method: 'PUT',
-                body: JSON.stringify(object),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.error(err));
-            */
-
-        console.log(object);
-     }, [rating]);
 
     return (
         

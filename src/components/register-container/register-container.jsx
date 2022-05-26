@@ -18,7 +18,8 @@ class RegisterForm extends Component {
             username: '',
             contrasena:'',
             correo: '',
-            valoracion: 'null',
+            valoracion1: '0',
+            valoracion2: '0',
             type: "USER",
             edad: '',
             estudios: '',
@@ -46,7 +47,7 @@ class RegisterForm extends Component {
         this.validatePassword();
 
         if (this.validateName() && this.validateEmail() && this.validateCurso() && this.validatePassword()) {
-            fetch('https://mern-stack-tefege.herokuapp.com/api/usuarios', {
+            fetch('http://localhost:4000/api/usuarios', {
                 method: 'POST',
                 body: JSON.stringify(this.state),
                 headers: {
