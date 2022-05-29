@@ -102,8 +102,6 @@ const DashContainer = () => {
                 <div className='datatable-changeusers'>
                 <DataTable value={datos} responsiveLayout="scroll">
                     <Column field="_id" header="ID"></Column>
-                    <Column field="nombre" header="Nombre"></Column>
-                    <Column field="apellidos" header="Apellidos"></Column>
                     <Column field="username" header="Username"></Column>
                     <Column field="contrasena" header="Contraseña"></Column>
                     <Column field="type" header="Tipo"></Column>

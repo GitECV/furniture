@@ -5,7 +5,8 @@ import { Rating } from 'react-simple-star-rating';
 import { Link } from 'react-router-dom';
 
 const CatalogItem = props => {
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(0);
+    const [routeConcat, setRouteConcat] = useState(`/catalogo/element/${props.id}`);
 
     const handleRating = (rate) => {
         if (sessionStorage.getItem("ID") !== null) {
@@ -46,7 +47,7 @@ const CatalogItem = props => {
         
         <div className="catalog-item" id={props.id}>
             <div className="catalog-item-text">
-            <Link to='element/1'>
+            <Link to={routeConcat}>
                 <h1>{props.title}</h1>
                 </Link>
                 <p>{props.description}</p>

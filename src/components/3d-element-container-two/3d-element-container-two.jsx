@@ -4,9 +4,9 @@ import { Canvas, useLoader } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera, useGLTF } from "@react-three/drei";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { TextureLoader } from 'three/src/loaders/TextureLoader.js';
-import  GUIElementSelector  from '../gui-element-selector/gui-element-selector.jsx';
+import  GUIElementSelector  from '../gui-element-selector-dos/gui-element-selector.jsx';
 import { proxy, useSnapshot } from 'valtio';
-import cajonera from '../../3d-elements/cajonera.glb';
+import silla from '../../3d-elements/silla.glb';
 import { Suspense, useRef, useState } from "react";
 import { DoubleSide } from "three";
 import { useSelector } from "react-redux";
@@ -88,7 +88,7 @@ function ModelContainer(props) {
 
 function Cajonera ( props ) {
   const group = useRef()
-  const { nodes, materials } = useGLTF(cajonera);
+  const { nodes, materials } = useGLTF(silla);
 
   //Array con todas las texturas
   const txt_array = [
@@ -96,9 +96,9 @@ function Cajonera ( props ) {
     'https://i.imgur.com/7pQfXYm.jpg', 
     'https://i.imgur.com/CSRW3nD.jpg', 
     'https://i.imgur.com/q9axK40.jpg',
-    'https://i.imgur.com/cPaXe0C.jpg',
-    'https://i.imgur.com/wFV711i.jpg',
-    'https://i.imgur.com/KPS7OaU.jpg'
+    'https://i.imgur.com/3R3WG8f.jpg',
+    'https://i.imgur.com/CoY9gk7.jpg',
+    'https://i.imgur.com/H8G5wlu.jpg'
   ];
   //Variables para cada una de las partes de la Mesilla
   let deff_cajon = useLoader(THREE.TextureLoader, txt_array[parseInt(props.StateCajon)]);
@@ -106,30 +106,30 @@ function Cajonera ( props ) {
   let deff_mesilla = useLoader(THREE.TextureLoader, txt_array[parseInt(props.StateMesilla)]);
 
   //Con el handler podemos controlar la propagación del evento y accionar el dispatcher
-  const handleOnClickPomo = (e) => {
+  const handleOnClickBack = (e) => {
     e.stopPropagation();
     props.MenuPomo();
   }
 
-  const handleClickCajon = (e) => {
+  const handleClickMadera = (e) => {
     e.stopPropagation();
     props.MenuCajon();
   }
 
-  const handleClickMesilla = (e) => {
+  const handleClickPrincipal = (e) => {
     e.stopPropagation();
     props.MenuMesilla();
   }
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh onClick={handleOnClickPomo} geometry={nodes.pomo.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} >
-        <meshStandardMaterial attach="material" map={deff_pomo} roughness={props.Pulido / 100} /> 
+      <mesh onClick={handleOnClickBack} geometry={nodes.polySurface1.geometry} material={materials.Fabric} scale={6}>
+        <meshStandardMaterial attach="material" map={deff_pomo} roughness={0.9} />
       </mesh>
-      <mesh onClick={handleClickMesilla} geometry={nodes.mesilla.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1}>
-        <meshStandardMaterial attach="material" map={deff_mesilla} roughness={props.Barniz / 100} /> 
+      <mesh onClick={handleClickPrincipal} geometry={nodes.polySurface2.geometry} material={materials.Fabric} scale={6}>
+        <meshStandardMaterial attach="material" map={deff_mesilla} roughness={0.9} /> 
       </mesh>
-      <mesh onClick={handleClickCajon} geometry={nodes.cajon.geometry} position={[-0.04, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={1} >
+      <mesh onClick={handleClickMadera} geometry={nodes.polySurface13.geometry} material={materials.Wood} scale={6}>
         <meshStandardMaterial attach="material" map={deff_cajon} roughness={props.Barniz / 100} /> 
       </mesh>
     </group>

@@ -1,16 +1,13 @@
-const reducer = (state = 0, action) => {
+const reducer = (state = 4, action) => {
     switch (action.type) {
         case "Mesilla1":
-            return state = 0;
+            return state = 4;
 
         case "Mesilla2":
-            return state = 1;
+            return state = 5;
 
         case "Mesilla3":
-            return state = 2;
-
-        case "Mesilla4":
-            return state = 3;
+            return state = 6;
 
         default:
             return state
