@@ -1,3 +1,4 @@
+import React from "react";
 import MaterialIcon from '../gui-element-selector/gui-element-selector'
 
 const ThreeDGui = props => {

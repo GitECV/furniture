@@ -1,16 +1,16 @@
 import React from "react";
+import THREEDContainer from './components/3d-element-container/3d-element-container.jsx';
 import NavBarContainer from './components/nav-bar-container/nav-bar-container.jsx';
 import HamburguerBack from "./components/hamburguer-menu-background/hamburguer-menu-background.jsx";
-import RegisterContainer from './components/register-container/register-container.jsx';
 
-function Register() {
+function Element() {
 
   return (
   <div className="App">
-    <NavBarContainer text={"regístrate."} container={""}/>
-    <RegisterContainer />
+    <NavBarContainer text={"visor."} container={".container3d"}/>
+    <THREEDContainer />
     <HamburguerBack />
   </div>);
 }
 
-export default Register;
+export default Element;

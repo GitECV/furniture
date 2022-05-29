@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from 'primereact/button';
 import { Link } from "react-router-dom";
 import TypewriterText from '../typewrite-text/typewrite-text.jsx';

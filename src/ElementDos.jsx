@@ -1,4 +1,5 @@
-import THREEDContainer from './components/3d-element-container/3d-element-container.jsx';
+import React from "react";
+import THREEDContainer from './components/3d-element-container-two/3d-element-container-two.jsx';
 import NavBarContainer from './components/nav-bar-container/nav-bar-container.jsx';
 import HamburguerBack from "./components/hamburguer-menu-background/hamburguer-menu-background.jsx";
 

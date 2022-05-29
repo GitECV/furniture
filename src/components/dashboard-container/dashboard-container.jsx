@@ -2,12 +2,13 @@ import React, { useState, useEffect, PureComponent } from 'react';
 import { SelectButton } from 'primereact/selectbutton';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Area, PieChart, Pie, Sector, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart } from 'recharts';
 import axios from 'axios';
 import ModifyUsers from '../modify-users/modify-users';
 import DeleteUsers from '../delete-users/delete-users';
 
 import './css/dashboard-container.css';
+import { isIfStatement } from 'typescript';
 
 const DashContainer = () => {
     const [value1, setValue1] = useState('Off');
@@ -32,9 +33,47 @@ const DashContainer = () => {
     }
 
     const GraphElement = () => {
+        const [valoracion, setValoracion] = useState([]);
+        const [estudios, setEstudios] = useState([]);
+        useEffect(() => {
+            axios.get('https://mern-stack-tefege.herokuapp.com/api/usuarios')
+                .then(res => {
+                    let valoracionModelo1 = 0;
+                    let valoracionmodelo2 = 0;
 
+                    let estudiosSi = 0;
+                    let estudiosNo = 0;
+
+                    for (let r in res.data) {                       
+                        valoracionModelo1 += parseInt(res.data[r].valoracion1);
+                        valoracionmodelo2 += parseInt(res.data[r].valoracion2);
+                        
+                        if (res.data[r].estudios === "Si") {
+                            estudiosSi++;
+                        } else {
+                            estudiosNo++;
+                        }
+                    }
+                    setValoracion([{name: "Modelo 1", valoracion: valoracionModelo1},{name: "Modelo 2", valoracion: valoracionmodelo2}]);
+                    setEstudios([{name: "Si", valor: estudiosSi}, {name: "No", valor: estudiosNo}]);
+            })
+                .catch(err => {
+                    console.log(err)
+                }, []);
+        })
         return(
-            <div>
+            <div className='chart-container'>
+                <div className='chart-container-uno'>
+                    <BarChart width={500} height={200} data={valoracion}>
+                        <Bar dataKey="valoracion" fill="#8884d8" />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                    </BarChart>
+                    <Legend />
+                </div>
             </div>
         )
     }
@@ -45,8 +84,13 @@ const DashContainer = () => {
         useEffect(() => {
             axios.get('https://mern-stack-tefege.herokuapp.com/api/usuarios')
                 .then(res => {
-                    setDatos(res.data);
-                   
+                    let dataArray = [];
+                    for(let data in res.data) {
+                        if(res.data[data].type !== "SUPERUSER"){
+                            dataArray.push(res.data[data]);
+                        }
+                    }
+                    setDatos(dataArray);                   
                 })
                 .catch(err => {
                     console.log(err)

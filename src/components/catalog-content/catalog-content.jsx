@@ -1,3 +1,4 @@
+import React from "react";
 import Placeholder from '../../images/aguja.png';
 import CatalogItem from '../catalog-item/catalog-item.jsx';
 

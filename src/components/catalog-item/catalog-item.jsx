@@ -46,7 +46,7 @@ const CatalogItem = props => {
         
         <div className="catalog-item" id={props.id}>
             <div className="catalog-item-text">
-            <Link to='/element'>
+            <Link to='element/1'>
                 <h1>{props.title}</h1>
                 </Link>
                 <p>{props.description}</p>

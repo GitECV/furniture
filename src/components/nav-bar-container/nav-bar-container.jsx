@@ -1,3 +1,4 @@
+import React from "react";
 import { Component, useState } from "react";
 import NavBarLogo from "../nav-bar-logo/nav-bar-logo";
 import NavBarMenu from "../nav-bar-menu/nav-bar-menu";
