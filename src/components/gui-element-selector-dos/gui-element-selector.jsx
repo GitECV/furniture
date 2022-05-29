@@ -14,14 +14,14 @@ const ThreeDElementContainer = (props) => {
 
   //Sacamos los estados para comprobar que funciona
 
-  const mesilla_txt = useSelector((state) => state.mesillaMaterial);
+  const mesilla_txt = useSelector((state) => state.tapizMaterial);
   const cajon_txt = useSelector((state) => state.cajonMaterial);
   const pomo_txt = useSelector((state) => state.pomoMaterial);
 
   const dispatch = useDispatch();
   //Sacamos los actiones de Redux para poder modificar los estados
   const { 
-    pomo1, pomo2, pomo3, mesilla1, mesilla2, mesilla3, mesilla4, cajon1, cajon2, cajon3, cajon4
+    pomo1, pomo2, pomo3, mesilla1, mesilla2, mesilla3, mesilla4, cajon1, cajon2, cajon3, cajon4, tapiz1, tapiz2, tapiz3
   } = bindActionCreators(actionCreators, dispatch);
 
   let renderElement = null;
@@ -31,9 +31,9 @@ const ThreeDElementContainer = (props) => {
         <div className="GUI-material">
           <h1>Tapiz delantero</h1>
           <div className='material-selector'>
-              <Avatar onClick={mesilla1}  shape="circle" size='xlarge' image={ 'https://i.imgur.com/nd4Lega.jpg' } />
-              <Avatar onClick={mesilla2} shape="circle" size='xlarge' image={ 'https://i.imgur.com/npJYBOW.jpg' } />
-              <Avatar onClick={mesilla3} shape="circle" size='xlarge' image={ 'https://i.imgur.com/hBB8OTH.jpg' } />
+              <Avatar onClick={tapiz1}  shape="circle" size='xlarge' image={ 'https://i.imgur.com/nd4Lega.jpg' } />
+              <Avatar onClick={tapiz2} shape="circle" size='xlarge' image={ 'https://i.imgur.com/npJYBOW.jpg' } />
+              <Avatar onClick={tapiz3} shape="circle" size='xlarge' image={ 'https://i.imgur.com/hBB8OTH.jpg' } />
             </div>
 
           </div>

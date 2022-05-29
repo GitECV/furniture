@@ -64,6 +64,24 @@ export const mesilla4 = () => {
     }
 }
 
+export const tapiz1 = () => {
+    return {
+            type:"Tapiz1"
+    }
+}
+
+export const tapiz2 = () => {
+    return {
+            type:"Tapiz2"
+    }
+}
+
+export const tapiz3 = () => {
+    return {
+            type:"Tapiz3"
+    }
+}
+
 export const mesillaPomo = () => {
     return {
             type:"mesillaPomo"

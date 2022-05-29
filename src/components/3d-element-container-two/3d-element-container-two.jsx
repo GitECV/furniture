@@ -24,7 +24,7 @@ const TREEDElementContainer = () => {
     const [encerado, setEncerado] = useState(0);
 
   //Sacamos los indices de los materiales que vamos a utilizar
-  const mesilla_txt = useSelector((state) => state.mesillaMaterial);
+  const mesilla_txt = useSelector((state) => state.tapizMaterial);
   const cajon_txt = useSelector((state) => state.cajonMaterial);
   const pomo_txt = useSelector((state) => state.pomoMaterial);
   const materialType = useSelector((state) => state.changeMaterial);
